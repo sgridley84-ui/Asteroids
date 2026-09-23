@@ -1,5 +1,5 @@
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MIN_RADIUS
 from logger import log_state, log_event
 from player import Player
 from asteroid import Asteroid
@@ -52,7 +52,7 @@ def main():
                 if pew.collides_with(asteroid) == True:
                     log_event("asteroid_shot")
                     pew.kill()
-                    asteroid.kill()
+                    asteroid.split(ASTEROID_MIN_RADIUS)
         pygame.display.flip()
         dt = clock.tick(60) / 1000
     
